@@ -171,7 +171,7 @@ class Stack:
     def peek(self):
         assert not self.empty()
         # Return the item on the top of the Stack without popping it out.
-        return self.top
+        return self.top.val
 
     def __iter__(self):
         # This implements "for item in Stack"
@@ -200,7 +200,7 @@ def valid_parentheses (expr: str):
     for i in slist:
         if i == "(" or i == "[" or i == "{":
             parenstack.push(i)
-        elif not parenstack.empty() and parenstack.peek() == diction[i]:
+        elif parenstack.empty() == False and parenstack.peek() == diction[i]:
             parenstack.pop()
         else:
             return False
@@ -244,5 +244,3 @@ print("Let string str1 = " + str1 + ", which is a series of valid parentheses. "
 str2 = "([])}"
 print("Let string str2 = " + str2 + ", which is a series of invalid parentheses. "
                                     "Our method returns", valid_parentheses(str2), ".")
-
-print(valid_parentheses("((()){)}"))
